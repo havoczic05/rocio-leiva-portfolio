@@ -1,119 +1,419 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rocio Leiva | Diseñadora de modas</title>
+    <title>Rocío Leiva | Diseñadora de Modas</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
     <link rel="manifest" href="/assets/site.webmanifest">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;500&family=Great+Vibes&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/scrollreveal"></script>
-
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@300;400;500;600&family=Dancing+Script:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
-    <nav>
-        <div class="nav-content">
-            <div class="logo"><a href="#hero">RL</a></div>
-            <ul class="nav-links">
-                <li><a href="#about">Sobre mi</a></li>
-                <li><a href="#work">Diseños</a></li>
-                <li><a href="#contact" class="contact-btn">Contacto</a></li>
+    <!-- Mobile Menu Button -->
+    <button class="mobile-menu-btn" id="mobileMenuBtn">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="#hero">Rocío Leiva</a>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#hero" class="nav-link">Inicio</a></li>
+                <li><a href="#about" class="nav-link">Sobre Mí</a></li>
+                <li><a href="#portfolio" class="nav-link">Diseños</a></li>
+                <li><a href="#testimonials" class="nav-link">Testimonios</a></li>
+                <li><a href="#contact" class="nav-link contact-btn">Contacto</a></li>
             </ul>
         </div>
     </nav>
 
-    <section id="hero">
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="hero-background"></div>
         <div class="hero-content">
-            <h1>Rocio Leyva</h1>
-            <p class="subtitle">Diseñadora de modas con más de 25 años de experiencia</p>
-            <p class="description">Creando piezas hechas a la medida que combinan elegancia con sofisticación.</p>
-            <a href="#contact" class="cta-button">
-                Contáctame
-            </a>
+            <div class="hero-text">
+                <h1 class="hero-title">Rocío Leiva</h1>
+                <p class="hero-subtitle">Diseñadora de Alta Costura</p>
+                <p class="hero-description">
+                    Creando elegancia atemporal con más de 25 años de experiencia
+                    en diseño de modas exclusivo y personalizado.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#portfolio" class="btn btn-primary">Ver Diseños</a>
+                    <a href="#contact" class="btn btn-secondary">Contactar</a>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-arrow"></div>
         </div>
     </section>
 
-    <section id="about">
+    <!-- About Section -->
+    <section id="about" class="about">
         <div class="container">
-            <h2>Acerca de mi</h2>
+            <div class="section-header">
+                <h2 class="section-title">Sobre Mí</h2>
+                <div class="section-divider"></div>
+            </div>
             <div class="about-content">
-                <p>Con pasión por la moda  y el diseño atemporal, creo piezas que celebran la individualidad y la vida. Cada diseño está elaborado con atención al detalle y un compromiso con la excelencia.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="work">
-        <div class="container">
-            <h2>Diseños</h2>
-            <div class="work-grid">
-                <div class="work-item">
-                    <img src="/assets/vestido-fiesta.avif" alt="Vestido de fiesta" loading="lazy">
-                    <h3>Vestido de fiesta</h3>
-                    <p>Sustainable pieces inspired by nature</p>
-                </div>
-                <div class="work-item">
-                    <img src="/assets/vestido-gala-caretas.avif" alt="Vestido de gala, revista Caretas" loading="lazy">
-                    <h3>Vestido de gala</h3>
-                    <p>Elegant designs for special occasions</p>
-                </div>
-                <div class="work-item">
-                    <img src="/assets/vestido-novia.avif" alt="Vestido de novia" loading="lazy">
-                    <h3>Vestido de boda</h3>
-                    <p>Bespoke wedding dresses</p>
-                </div>
-                <div class="work-item">
-                    <img src="/assets/vestido-quinceanos.avif" alt="Vestido de quinceaños" loading="lazy">
-                    <h3>Vestido de boda</h3>
-                    <p>Bespoke wedding dresses</p>
-                </div>
-                <div class="work-item">
-                    <img src="/assets/vestido-fiesta-juvenil.avif" alt="Vestido de fiesta juvenil" loading="lazy">
-                    <h3>Vestido de boda</h3>
-                    <p>Bespoke wedding dresses</p>
-                </div>
-                <div class="work-item">
-                    <img src="/assets/vestido-boda.avif" alt="Vestido de boda" loading="lazy">
-                    <h3>Vestido de boda</h3>
-                    <p>Bespoke wedding dresses</p>
+                <div class="about-text">
+                    <p class="about-intro">
+                        Con una pasión inquebrantable por la moda y el diseño atemporal,
+                        creo piezas únicas que celebran la individualidad y la elegancia de cada mujer.
+                    </p>
+                    <p>
+                        Durante más de 25 años, he dedicado mi vida a perfeccionar el arte de la alta costura,
+                        trabajando con las mejores telas y técnicas tradicionales para crear vestidos que no solo
+                        visten el cuerpo, sino que cuentan una historia.
+                    </p>
+                    <div class="about-highlights">
+                        <div class="highlight">
+                            <i class="fas fa-award"></i>
+                            <span>25+ años de experiencia</span>
+                        </div>
+                        <div class="highlight">
+                            <i class="fas fa-heart"></i>
+                            <span>Diseños hechos con amor</span>
+                        </div>
+                        <div class="highlight">
+                            <i class="fas fa-star"></i>
+                            <span>Exclusividad garantizada</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="contact">
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio">
         <div class="container">
-            <h2>Interesad@ en algún diseño?</h2>
+            <div class="section-header">
+                <h2 class="section-title">Mis Diseños</h2>
+                <div class="section-divider"></div>
+                <p class="section-subtitle">Cada diseño es una obra de arte única</p>
+            </div>
+            <div class="portfolio-grid">
+                <div class="portfolio-item" data-category="fiesta">
+                    <div class="portfolio-image">
+                        <img src="/assets/vestido-fiesta.avif" alt="Vestido de fiesta elegante" loading="lazy">
+                        <div class="portfolio-overlay">
+                            <h3>Vestido de Fiesta</h3>
+                            <p>Elegancia para ocasiones especiales</p>
+                            <button class="view-btn" onclick="openModal(this)">Ver Detalles</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="gala">
+                    <div class="portfolio-image">
+                        <img src="/assets/vestido-gala-caretas.avif" alt="Vestido de gala exclusivo" loading="lazy">
+                        <div class="portfolio-overlay">
+                            <h3>Vestido de Gala</h3>
+                            <p>Sofisticación en su máxima expresión</p>
+                            <button class="view-btn" onclick="openModal(this)">Ver Detalles</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="novia">
+                    <div class="portfolio-image">
+                        <img src="/assets/vestido-novia.avif" alt="Vestido de novia único" loading="lazy">
+                        <div class="portfolio-overlay">
+                            <h3>Vestido de Novia</h3>
+                            <p>Tu día especial merece un vestido único</p>
+                            <button class="view-btn" onclick="openModal(this)">Ver Detalles</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="quinceanos">
+                    <div class="portfolio-image">
+                        <img src="/assets/vestido-quinceanos.avif" alt="Vestido de quinceaños" loading="lazy">
+                        <div class="portfolio-overlay">
+                            <h3>Vestido de Quinceaños</h3>
+                            <p>Celebrando tu transición con estilo</p>
+                            <button class="view-btn" onclick="openModal(this)">Ver Detalles</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="juvenil">
+                    <div class="portfolio-image">
+                        <img src="/assets/vestido-fiesta-juvenil.avif" alt="Vestido juvenil moderno" loading="lazy">
+                        <div class="portfolio-overlay">
+                            <h3>Vestido Juvenil</h3>
+                            <p>Frescura y modernidad para jóvenes</p>
+                            <button class="view-btn" onclick="openModal(this)">Ver Detalles</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="boda">
+                    <div class="portfolio-image">
+                        <img src="/assets/vestido-boda.avif" alt="Vestido de boda elegante" loading="lazy">
+                        <div class="portfolio-overlay">
+                            <h3>Vestido de Boda</h3>
+                            <p>Elegancia nupcial personalizada</p>
+                            <button class="view-btn" onclick="openModal(this)">Ver Detalles</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Lo que Dicen Mis Clientas</h2>
+                <div class="section-divider"></div>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">
+                            "Rocío creó el vestido de mis sueños para mi boda. Cada detalle fue perfecto,
+                            desde el diseño hasta la confección. Me sentí como una princesa."
+                        </p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-info">
+                            <h4>María González</h4>
+                            <span>Novia 2024</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">
+                            "La atención al detalle y la calidad de los materiales son excepcionales.
+                            Rocío no solo diseña vestidos, crea obras de arte."
+                        </p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-info">
+                            <h4>Carmen Vega</h4>
+                            <span>Evento de Gala</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">
+                            "Mi vestido de quinceaños fue único y hermoso. Rocío escuchó todas mis ideas
+                            y las convirtió en realidad. ¡Recomendada al 100%!"
+                        </p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-info">
+                            <h4>Isabella Morales</h4>
+                            <span>Quinceañera</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">
+                            "Rocío creó el vestido de mis sueños para mi boda. Cada detalle fue perfecto,
+                            desde el diseño hasta la confección. Me sentí como una princesa."
+                        </p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-info">
+                            <h4>María González</h4>
+                            <span>Novia 2024</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">
+                            "La atención al detalle y la calidad de los materiales son excepcionales.
+                            Rocío no solo diseña vestidos, crea obras de arte."
+                        </p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-info">
+                            <h4>Carmen Vega</h4>
+                            <span>Evento de Gala</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">
+                            "Mi vestido de quinceaños fue único y hermoso. Rocío escuchó todas mis ideas
+                            y las convirtió en realidad. ¡Recomendada al 100%!"
+                        </p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-info">
+                            <h4>Isabella Morales</h4>
+                            <span>Quinceañera</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Comencemos tu Proyecto</h2>
+                <div class="section-divider"></div>
+                <p class="section-subtitle">¿Lista para crear algo extraordinario juntas?</p>
+            </div>
             <div class="contact-content">
-                <p>No dudes en ponerte en contacto conmigo.</p>
-                <a target="_blank" href="https://wa.me/+51991296334" class="cta-button">Contactar</a>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Teléfono</h4>
+                            <p>+51 991 296 334</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>rochizad@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h4>Horarios</h4>
+                            <p>Lunes a Viernes: 9:00 AM - 6:00 PM</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-cta">
+                    <p>Conversemos sobre tu visión y creemos juntas el vestido perfecto para ti.</p>
+                    <a href="https://wa.me/+51991296334" target="_blank" class="btn btn-primary">
+                        <i class="fab fa-whatsapp"></i>
+                        Contactar por WhatsApp
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
-    <footer>
+    <!-- Footer -->
+    <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <div class="social-links">
-                    <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
-                    <a href="#" target="_blank"><i class="fab fa-pinterest"></i></a>
-                    <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <div class="footer-brand">
+                    <h3>Rocío Leiva</h3>
+                    <p>Diseñadora de Alta Costura</p>
                 </div>
-                <p>&copy; 2025 Rocio Leiva. All rights reserved.</p>
+                <div class="footer-sitemap">
+                    <h4>Navegación</h4>
+                    <ul class="sitemap-links">
+                        <li><a href="#hero">Inicio</a></li>
+                        <li><a href="#about">Sobre Mí</a></li>
+                        <li><a href="#portfolio">Diseños</a></li>
+                        <li><a href="#testimonials">Testimonios</a></li>
+                        <li><a href="#contact">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-services">
+                    <h4>Servicios</h4>
+                    <ul class="services-links">
+                        <li>Vestidos de Novia</li>
+                        <li>Vestidos de Gala</li>
+                        <li>Vestidos de Fiesta</li>
+                        <li>Vestidos de Quinceaños</li>
+                        <li>Diseño Personalizado</li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h4>Sígueme</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-link" target="_blank">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link" target="_blank">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-link" target="_blank">
+                            <i class="fab fa-pinterest"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2020 Rocío Leiva. Todos los derechos reservados.</p>
             </div>
         </div>
     </footer>
 
-    <script src="/reveal.js"></script>
+    <!-- Modal -->
+    <div id="imageModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <img id="modalImage" alt="">
+            <div class="modal-info">
+                <h3 id="modalTitle"></h3>
+                <p id="modalDescription"></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="/script.js"></script>
 </body>
-
-<div id="imageModal" class="modal">
-    <span class="close">&times;</span>
-    <img class="modal-content" id="modalImage">
-    <div id="caption"></div>
-</div>
-
 </html>
