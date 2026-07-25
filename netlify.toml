@@ -1,0 +1,10 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# Desactivar prerenderizado legado de Netlify ya que Astro genera HTML estático puro en build
+[build.processing]
+  skip_processing = false
+
+[build.processing.html]
+  pretty_urls = true
