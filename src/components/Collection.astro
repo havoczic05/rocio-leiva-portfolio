@@ -1,0 +1,133 @@
+---
+import CollectionCard from './CollectionCard.astro';
+
+const dresses = [
+  {
+    title: 'Valentina Sublime',
+    category: 'Corte A-Line · Encaje Chantilly & Seda',
+    categoryTag: 'aline',
+    badge: 'Exclusivo Atelier',
+    imageSrc: '/assets/vestido-novia.avif',
+    imageAlt: 'Vestido de novia Valentina Sublime silueta A-Line en encaje Chantilly',
+    modalCategory: 'Corte A-Line · Encaje Chantilly & Seda',
+    modalDesc: 'Confeccionado en mikado de seda con sobria falda A-line y un deslumbrante escote ilusión con encaje bordado a mano.'
+  },
+  {
+    title: 'Victoria Imperial',
+    category: 'Princesa / Ball Gown · Tul & Pedrería',
+    categoryTag: 'princesa',
+    badge: 'Colección Real',
+    imageSrc: '/assets/vestido-boda.avif',
+    imageAlt: 'Vestido de novia Victoria Imperial silueta princesa con pedrería',
+    modalCategory: 'Princesa / Ball Gown · Tul Francés',
+    modalDesc: 'Majestuoso vestido de corte princesa con cuerpo encorsetado y falda multicapa de tul con apliques de pedrería fina.'
+  },
+  {
+    title: 'Isabella Sirena',
+    category: 'Sirena / Mermaid · Crepé de Seda',
+    categoryTag: 'sirena',
+    badge: 'Alta Costura',
+    imageSrc: '/assets/vestido-gala-caretas.avif',
+    imageAlt: 'Vestido de novia Isabella Sirena en crepé de seda',
+    modalCategory: 'Sirena / Mermaid · Crepé & Espalda Descubierta',
+    modalDesc: 'Silueta sirena esculpida en crepé de seda que ciñe la figura, complementada con una escultural espalda drapeada.'
+  },
+  {
+    title: 'Aria Nocturne',
+    category: 'Alta Gala · Seda Satinada',
+    categoryTag: 'gala',
+    badge: 'Edición Limitada',
+    imageSrc: '/assets/vestido-fiesta.avif',
+    imageAlt: 'Vestido de gala Aria Nocturne en seda satinada',
+    modalCategory: 'Alta Gala · Seda & Caída Fluida',
+    modalDesc: 'Elegante diseño de gala pensado para novias modernas o madrinas de honor, confeccionado en satén líquido de caída perfecta.'
+  },
+  {
+    title: 'Seraphina Royale',
+    category: 'Corte de Época · Pedrería Manual',
+    categoryTag: 'gala',
+    badge: 'Diseño de Autor',
+    imageSrc: '/assets/vestido-quinceanos.avif',
+    imageAlt: 'Vestido de gala Seraphina Royale con bordado manual',
+    modalCategory: 'Corte Época · Bordado Art Nouveau',
+    modalDesc: 'Obra maestra del atelier con corpiño estructurado y falda majestuosa decorada con motivos botánicos bordados.'
+  },
+  {
+    title: 'Camila Minimal',
+    category: 'Corte Recto · Gasa & Tul',
+    categoryTag: 'aline',
+    badge: 'Boda Civil & Renovación de Votos',
+    imageSrc: '/assets/vestido-fiesta-juvenil.avif',
+    imageAlt: 'Vestido nupcial civil Camila Minimal',
+    modalCategory: 'Corte Recto · Minimalismo Contemporáneo',
+    modalDesc: 'Una propuesta etérea y romántica en gasa de seda, perfecta para ceremonias civiles o bodas en la playa.'
+  }
+];
+---
+
+<section id="coleccion" class="section" style="background-color: var(--color-bg-secondary);">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Colección Nupcial & Galería Atelier</h2>
+      <div class="section-divider"></div>
+      <p class="section-description">
+        Explora nuestras siluetas más icónicas. Cada diseño sirve como punto de partida para tu vestido completamente personalizado.
+      </p>
+    </div>
+
+    <!-- Filter Bar -->
+    <div class="filter-bar">
+      <button class="filter-btn active" data-filter="all">Todas las Siluetas</button>
+      <button class="filter-btn" data-filter="aline">Corte A-Line</button>
+      <button class="filter-btn" data-filter="princesa">Princesa / Ball Gown</button>
+      <button class="filter-btn" data-filter="sirena">Sirena / Mermaid</button>
+      <button class="filter-btn" data-filter="gala">Alta Gala & Fiesta</button>
+    </div>
+
+    <!-- Collection Grid -->
+    <div class="collection-grid" id="collection-grid">
+      {dresses.map(dress => (
+        <CollectionCard {...dress} />
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  function initGalleryFilters() {
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const collectionCards = document.querySelectorAll('.collection-card');
+
+    if (!filterBtns.length || !collectionCards.length) return;
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filter = btn.getAttribute('data-filter');
+
+        collectionCards.forEach(card => {
+          const el = card as HTMLElement;
+          const category = el.getAttribute('data-category');
+
+          if (filter === 'all' || category === filter) {
+            el.style.display = 'flex';
+            setTimeout(() => {
+              el.style.opacity = '1';
+              el.style.transform = 'translateY(0)';
+            }, 50);
+          } else {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(10px)';
+            setTimeout(() => {
+              el.style.display = 'none';
+            }, 300);
+          }
+        });
+      });
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', initGalleryFilters);
+</script>

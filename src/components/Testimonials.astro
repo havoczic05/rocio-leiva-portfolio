@@ -1,0 +1,51 @@
+---
+const testimonials = [
+  {
+    quote: '"Rocío entendió perfectamente la idea que tenía en mente. Su atención a cada detalle y la calidad de la seda hicieron que me sintiera única en mi boda."',
+    name: 'Mariana Fernández',
+    details: 'Boda en Lima · Novia Rocío Leiva 2025'
+  },
+  {
+    quote: '"Los 25 años de experiencia de Rocío se notan en el calce perfecto. No hubo una sola persona que no elogiara mi vestido."',
+    name: 'Camila De la Fuente',
+    details: 'Boda en Cusco · Novia Rocío Leiva 2024'
+  },
+  {
+    quote: '"El proceso de pruebas fue encantador. Ver cómo mi vestido tomaba forma paso a paso fue una de las mejores partes del matrimonio."',
+    name: 'Valeria & Santiago',
+    details: 'Boda de Destino · Novia Rocío Leiva 2025'
+  }
+];
+---
+
+<section id="testimonios" class="section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Lo que Dicen Nuestras Novias</h2>
+      <div class="section-divider"></div>
+    </div>
+
+    <div class="testimonials-grid">
+      {testimonials.map(item => (
+        <div class="testimonial-card">
+          <div>
+            <div class="testimonial-stars">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <p class="testimonial-quote">
+              {item.quote}
+            </p>
+          </div>
+          <div class="testimonial-bride-info">
+            <h4 class="bride-name">{item.name}</h4>
+            <p class="bride-details">{item.details}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

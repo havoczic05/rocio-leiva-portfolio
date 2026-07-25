@@ -1,0 +1,47 @@
+---
+interface Props {
+  title: string;
+  category: string;
+  categoryTag: string;
+  badge: string;
+  imageSrc: string;
+  imageAlt: string;
+  modalDesc: string;
+  modalCategory: string;
+}
+
+const {
+  title,
+  category,
+  categoryTag,
+  badge,
+  imageSrc,
+  imageAlt,
+  modalDesc,
+  modalCategory
+} = Astro.props;
+---
+
+<article class="collection-card" data-category={categoryTag}>
+  <div class="collection-card-media">
+    <img src={imageSrc} alt={imageAlt} loading="lazy" />
+    <span class="collection-badge">{badge}</span>
+  </div>
+  <div class="collection-card-body">
+    <div>
+      <h3 class="collection-card-title">{title}</h3>
+      <p class="collection-card-category">{category}</p>
+    </div>
+    <button
+      class="card-action-btn"
+      aria-label={`Ver detalles del modelo ${title}`}
+      data-open-modal
+      data-title={title}
+      data-category={modalCategory}
+      data-img={imageSrc}
+      data-desc={modalDesc}
+    >
+      Ver Detalles
+    </button>
+  </div>
+</article>

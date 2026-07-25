@@ -1,0 +1,80 @@
+---
+---
+
+<div class="modal-backdrop" id="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal-dialog" id="modal-dialog">
+    <button class="modal-close-btn" id="modal-close-btn" aria-label="Cerrar detalles del vestido">&times;</button>
+    <div class="modal-media">
+      <img src="/assets/hero-banner-wedding-dress.avif" id="modal-img" alt="Vista detallada del vestido de novia" />
+    </div>
+    <div class="modal-body">
+      <div>
+        <h3 class="section-title" id="modal-title" style="font-size: 1.75rem; text-align: left; margin-bottom: 0.75rem;">Nombre del Vestido</h3>
+        <p style="color: var(--color-text-secondary); font-size: var(--text-sm);" id="modal-desc">
+          Descripción detallada del diseño...
+        </p>
+      </div>
+      <div style="margin-top: 2.0rem;">
+        <a href="#contacto" id="modal-cta-btn" class="btn btn-primary" style="width: 100%;">
+          Reservar Cita para Probar este Diseño
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function initDressModal() {
+    const modalBackdrop = document.getElementById('modal-backdrop');
+    const modalDialog = document.getElementById('modal-dialog');
+    const modalCloseBtn = document.getElementById('modal-close-btn');
+    const modalTitle = document.getElementById('modal-title');
+    const modalImg = document.getElementById('modal-img') as HTMLImageElement | null;
+    const modalDesc = document.getElementById('modal-desc');
+    const modalCtaBtn = document.getElementById('modal-cta-btn');
+
+    if (!modalBackdrop) return;
+
+    function openModal(title: string, category: string, imgSrc: string, description: string) {
+      if (modalTitle) modalTitle.textContent = title;
+      if (modalImg) {
+        modalImg.src = imgSrc;
+        modalImg.alt = title;
+      }
+      if (modalDesc) modalDesc.textContent = description;
+
+      modalBackdrop?.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      modalBackdrop?.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    // Attach listeners to all open-modal buttons
+    document.querySelectorAll('[data-open-modal]').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const target = e.currentTarget as HTMLElement;
+        const title = target.getAttribute('data-title') || '';
+        const category = target.getAttribute('data-category') || '';
+        const img = target.getAttribute('data-img') || '';
+        const desc = target.getAttribute('data-desc') || '';
+        openModal(title, category, img, desc);
+      });
+    });
+
+    modalCloseBtn?.addEventListener('click', closeModal);
+    modalBackdrop?.addEventListener('click', closeModal);
+    modalDialog?.addEventListener('click', (e) => e.stopPropagation());
+    modalCtaBtn?.addEventListener('click', closeModal);
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeModal();
+      }
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', initDressModal);
+</script>

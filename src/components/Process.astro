@@ -1,0 +1,46 @@
+---
+const steps = [
+  {
+    number: '01',
+    title: 'Consulta Privada',
+    description: 'Nos reunimos en el atelier para escuchar tus deseos, explorar siluetas y analizar tu estilo de boda.'
+  },
+  {
+    number: '02',
+    title: 'Boceto & Telas',
+    description: 'Rocío ilustra propuestas exclusivas para ti y seleccionamos juntos las telas de origen europeo.'
+  },
+  {
+    number: '03',
+    title: 'Pruebas en Toile',
+    description: 'Modelamos un prototipo en algodón sobre tu cuerpo para ajustar la anatomía y caída perfecta.'
+  },
+  {
+    number: '04',
+    title: 'El Vestido Soñado',
+    description: 'Costura final, bordado de detalles y entrega oficial de tu pieza de alta costura lista para el gran día.'
+  }
+];
+---
+
+<section id="proceso" class="section process-bg">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">El Proceso de Alta Costura Bespoke</h2>
+      <div class="section-divider"></div>
+      <p class="section-description">
+        Desde el primer boceto a lápiz hasta la prueba final, creamos una experiencia inolvidable.
+      </p>
+    </div>
+
+    <div class="process-steps-grid">
+      {steps.map(step => (
+        <div class="process-step-card">
+          <div class="process-step-number">{step.number}</div>
+          <h3 class="process-step-title">{step.title}</h3>
+          <p class="process-step-desc">{step.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

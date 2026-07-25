@@ -1,209 +1,187 @@
-// Minimal JavaScript for Rocío Leiva Portfolio
+/* ==========================================================================
+   ROCÍO LEIVA — HIGH COUTURE BRIDAL INTERACTIVE SCRIPTS
+   ========================================================================== */
 
-// DOM Elements
-const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-const navMenu = document.getElementById('navMenu');
-const navbar = document.getElementById('navbar');
-const modal = document.getElementById('imageModal');
-const modalImage = document.getElementById('modalImage');
-const modalTitle = document.getElementById('modalTitle');
-const modalDescription = document.getElementById('modalDescription');
-const modalClose = document.querySelector('.modal-close');
+document.addEventListener('DOMContentLoaded', () => {
+  initNavbar();
+  initMobileMenu();
+  initGalleryFilters();
+  initActiveNavLinkOnScroll();
+});
 
-// Navbar scroll effect
-function handleScroll() {
-    const heroSection = document.getElementById('hero');
-    const heroHeight = heroSection ? heroSection.offsetHeight : 0;
-
-    if (window.scrollY > heroHeight - 100) {
-        navbar.classList.add('scrolled');
+/* --------------------------------------------------------------------------
+   1. NAVBAR STICKY & SCROLL EFFECTS
+   -------------------------------------------------------------------------- */
+function initNavbar() {
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      navbar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.06)';
+      navbar.style.backgroundColor = 'rgba(255, 255, 255, 0.98)';
     } else {
-        navbar.classList.remove('scrolled');
+      navbar.style.boxShadow = 'none';
+      navbar.style.backgroundColor = 'rgba(255, 255, 255, 0.96)';
     }
+  });
 }
 
-// Mobile Menu Toggle
-function toggleMobileMenu() {
-    navMenu.classList.toggle('active');
-    mobileMenuBtn.classList.toggle('active');
+/* --------------------------------------------------------------------------
+   2. MOBILE MENU TOGGLE
+   -------------------------------------------------------------------------- */
+function initMobileMenu() {
+  const toggleBtn = document.getElementById('mobile-toggle');
+  const navMenu = document.getElementById('nav-menu');
 
-    // Add dark theme when mobile menu is open
-    if (navMenu.classList.contains('active')) {
-        navbar.classList.add('mobile-open');
-    } else {
-        navbar.classList.remove('mobile-open');
-    }
-}
+  if (!toggleBtn || !navMenu) return;
 
-// Close mobile menu when clicking on nav links
-function closeMobileMenu() {
-    navMenu.classList.remove('active');
-    mobileMenuBtn.classList.remove('active');
-    navbar.classList.remove('mobile-open');
-}
+  toggleBtn.addEventListener('click', () => {
+    const isExpanded = navMenu.classList.toggle('active');
+    toggleBtn.classList.toggle('open');
+    toggleBtn.setAttribute('aria-expanded', isExpanded ? 'true' : 'false');
+    toggleBtn.setAttribute('aria-label', isExpanded ? 'Cerrar menú de navegación' : 'Abrir menú de navegación');
+  });
 
-// Open modal for portfolio images
-function openModal(button) {
-    const portfolioItem = button.closest('.portfolio-item');
-    const img = portfolioItem.querySelector('img');
-    const overlay = portfolioItem.querySelector('.portfolio-overlay');
-    const title = overlay.querySelector('h3').textContent;
-    const description = overlay.querySelector('p').textContent;
-
-    modalImage.src = img.src;
-    modalImage.alt = img.alt;
-    modalTitle.textContent = title;
-    modalDescription.textContent = description;
-
-    modal.style.display = 'block';
-    document.body.style.overflow = 'hidden';
-}
-
-// Close modal
-function closeModal() {
-    modal.style.display = 'none';
-    document.body.style.overflow = 'auto';
-}
-
-// Smooth scroll to sections
-function smoothScrollTo(target) {
-    const element = document.querySelector(target);
-    if (element) {
-        const offsetTop = element.offsetTop - 80; // Account for fixed navbar
-        window.scrollTo({
-            top: offsetTop,
-            behavior: 'smooth'
-        });
-    }
-}
-
-// Intersection Observer for animations
-function createObserver() {
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('animate');
-            }
-        });
-    }, observerOptions);
-
-    // Observe section headers
-    document.querySelectorAll('.section-header').forEach(el => {
-        observer.observe(el);
+  // Close menu on nav link click
+  const navLinks = navMenu.querySelectorAll('a');
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      navMenu.classList.remove('active');
+      toggleBtn.classList.remove('open');
+      toggleBtn.setAttribute('aria-expanded', 'false');
+      toggleBtn.setAttribute('aria-label', 'Abrir menú de navegación');
     });
+  });
 }
 
-// Event Listeners
-document.addEventListener('DOMContentLoaded', function() {
-    // Mobile menu
-    if (mobileMenuBtn) {
-        mobileMenuBtn.addEventListener('click', toggleMobileMenu);
-    }
+/* --------------------------------------------------------------------------
+   3. GALLERY CATEGORY FILTERS
+   -------------------------------------------------------------------------- */
+function initGalleryFilters() {
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const collectionCards = document.querySelectorAll('.collection-card');
 
-    // Close mobile menu when clicking nav links
-    document.querySelectorAll('.nav-link').forEach(link => {
-        link.addEventListener('click', (e) => {
-            closeMobileMenu();
+  if (!filterBtns.length || !collectionCards.length) return;
 
-            // Handle smooth scrolling for anchor links
-            if (link.getAttribute('href').startsWith('#')) {
-                e.preventDefault();
-                smoothScrollTo(link.getAttribute('href'));
-            }
-        });
-    });
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      // Remove active from all
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
 
-    // Modal close events
-    if (modalClose) {
-        modalClose.addEventListener('click', closeModal);
-    }
+      const filter = btn.getAttribute('data-filter');
 
-    // Close modal when clicking outside
-    if (modal) {
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                closeModal();
-            }
-        });
-    }
+      collectionCards.forEach(card => {
+        const category = card.getAttribute('data-category');
 
-    // Close modal with Escape key
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && modal.style.display === 'block') {
-            closeModal();
+        if (filter === 'all' || category === filter) {
+          card.style.display = 'flex';
+          setTimeout(() => {
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+          }, 50);
+        } else {
+          card.style.opacity = '0';
+          card.style.transform = 'translateY(10px)';
+          setTimeout(() => {
+            card.style.display = 'none';
+          }, 300);
         }
+      });
     });
-
-    // Initialize intersection observer
-    createObserver();
-
-    // Scroll indicator click
-    const scrollIndicator = document.querySelector('.scroll-indicator');
-    if (scrollIndicator) {
-        scrollIndicator.addEventListener('click', () => {
-            smoothScrollTo('#about');
-        });
-    }
-
-    // Smooth scroll for all anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            const target = this.getAttribute('href');
-            if (target !== '#' && document.querySelector(target)) {
-                e.preventDefault();
-                smoothScrollTo(target);
-            }
-        });
-    });
-});
-
-// Handle scroll events
-window.addEventListener('scroll', handleScroll);
-
-// Handle window resize
-window.addEventListener('resize', () => {
-    // Close mobile menu on resize to desktop
-    if (window.innerWidth > 768) {
-        closeMobileMenu();
-    }
-});
-
-// Lazy loading for images (if needed)
-if ('IntersectionObserver' in window) {
-    const imageObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target;
-                if (img.dataset.src) {
-                    img.src = img.dataset.src;
-                    img.classList.remove('lazy');
-                    imageObserver.unobserve(img);
-                }
-            }
-        });
-    });
-
-    // Observe lazy images
-    document.querySelectorAll('img[data-src]').forEach(img => {
-        imageObserver.observe(img);
-    });
+  });
 }
 
-// Prevent form submission on contact form (if added later)
-document.addEventListener('submit', function(e) {
-    const form = e.target;
-    if (form.classList.contains('contact-form')) {
-        e.preventDefault();
-        // Handle form submission here
-        console.log('Form submitted');
-    }
+/* --------------------------------------------------------------------------
+   4. ACTIVE NAV LINK ON SCROLL
+   -------------------------------------------------------------------------- */
+function initActiveNavLinkOnScroll() {
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-link');
+
+  window.addEventListener('scroll', () => {
+    let currentSectionId = '';
+
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop - 120;
+      const sectionHeight = section.offsetHeight;
+      if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+        currentSectionId = section.getAttribute('id');
+      }
+    });
+
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === `#${currentSectionId}`) {
+        link.classList.add('active');
+      }
+    });
+  });
+}
+
+/* --------------------------------------------------------------------------
+   5. DRESS DETAIL MODAL
+   -------------------------------------------------------------------------- */
+function openDressModal(title, category, imgSrc, description) {
+  const modalBackdrop = document.getElementById('modal-backdrop');
+  const modalTitle = document.getElementById('modal-title');
+  const modalCategory = document.getElementById('modal-category');
+  const modalImg = document.getElementById('modal-img');
+  const modalDesc = document.getElementById('modal-desc');
+
+  if (!modalBackdrop) return;
+
+  modalTitle.textContent = title;
+  if (modalCategory) modalCategory.textContent = category;
+  modalImg.src = imgSrc;
+  modalImg.alt = title;
+  modalDesc.textContent = description;
+
+  modalBackdrop.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeDressModal(event) {
+  const modalBackdrop = document.getElementById('modal-backdrop');
+  if (modalBackdrop) {
+    modalBackdrop.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+}
+
+/* Close modal on ESC key */
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    closeDressModal();
+  }
 });
 
-// Global functions for inline event handlers
-window.openModal = openModal;
-window.closeModal = closeModal;
+/* --------------------------------------------------------------------------
+   6. APPOINTMENT FORM SUBMISSION HANDLER
+   -------------------------------------------------------------------------- */
+function handleFormSubmit(event) {
+  event.preventDefault();
+
+  const form = document.getElementById('appointment-form');
+  const successBanner = document.getElementById('form-success-banner');
+  const successTitle = document.getElementById('success-title');
+  const successBody = document.getElementById('success-body');
+
+  const nombre = document.getElementById('nombre')?.value || '';
+  const email = document.getElementById('email')?.value || '';
+
+  const submitBtn = event.target.querySelector('button[type="submit"]');
+  if (submitBtn) {
+    const originalText = submitBtn.textContent;
+    submitBtn.textContent = 'Enviando Solicitud...';
+    submitBtn.disabled = true;
+
+    setTimeout(() => {
+      if (form && successBanner) {
+        form.style.display = 'none';
+        if (successTitle) successTitle.textContent = `¡Solicitud Registrada, ${nombre}!`;
+        if (successBody) successBody.textContent = `Hemos recibido tu solicitud de cita privada. Un asesor de Rocío Leiva Atelier se comunicará contigo vía WhatsApp o al correo (${email}) en menos de 24 horas para confirmar tu horario.`;
+        successBanner.style.display = 'block';
+      }
+    }, 1000);
+  }
+}
