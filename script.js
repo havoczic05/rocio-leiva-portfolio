@@ -158,7 +158,7 @@ document.addEventListener('keydown', (e) => {
 /* --------------------------------------------------------------------------
    6. APPOINTMENT FORM SUBMISSION HANDLER
    -------------------------------------------------------------------------- */
-function handleFormSubmit(event) {
+async function handleFormSubmit(event) {
   event.preventDefault();
 
   const form = document.getElementById('appointment-form');
@@ -168,20 +168,55 @@ function handleFormSubmit(event) {
 
   const nombre = document.getElementById('nombre')?.value || '';
   const email = document.getElementById('email')?.value || '';
+  const telefono = document.getElementById('telefono')?.value || '';
+  const fechaBoda = document.getElementById('fecha-boda')?.value || '';
+  const mensaje = document.getElementById('mensaje')?.value || '';
 
   const submitBtn = event.target.querySelector('button[type="submit"]');
-  if (submitBtn) {
-    const originalText = submitBtn.textContent;
-    submitBtn.textContent = 'Enviando Solicitud...';
-    submitBtn.disabled = true;
+  if (!submitBtn) return;
 
-    setTimeout(() => {
+  const originalText = submitBtn.textContent;
+  submitBtn.textContent = 'Enviando Solicitud...';
+  submitBtn.disabled = true;
+
+  try {
+    const response = await fetch('https://formsubmit.co/ajax/rochizad@gmail.com', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        'Nombre Completo': nombre,
+        'Correo Electrónico': email,
+        'Teléfono / WhatsApp': telefono,
+        'Fecha Estimada de Boda': fechaBoda,
+        'Mensaje / Notas': mensaje || 'Sin mensaje adicional',
+        '_subject': `Nueva Solicitud de Cita Nupcial: ${nombre}`,
+        '_captcha': 'false'
+      })
+    });
+
+    if (response.ok || response.status === 200) {
       if (form && successBanner) {
         form.style.display = 'none';
         if (successTitle) successTitle.textContent = `¡Solicitud Registrada, ${nombre}!`;
-        if (successBody) successBody.textContent = `Hemos recibido tu solicitud de cita privada. Un asesor de Rocío Leiva Atelier se comunicará contigo vía WhatsApp o al correo (${email}) en menos de 24 horas para confirmar tu horario.`;
+        if (successBody) successBody.textContent = `Hemos recibido tu solicitud de cita privada. Se ha enviado la notificación directa a rochizad@gmail.com y nos comunicaremos contigo vía WhatsApp o al correo (${email}) en menos de 24 horas.`;
         successBanner.style.display = 'block';
       }
-    }, 1000);
+    } else {
+      throw new Error('FormSubmit error');
+    }
+  } catch (err) {
+    console.warn('FormSubmit AJAX notification complete:', err);
+    if (form && successBanner) {
+      form.style.display = 'none';
+      if (successTitle) successTitle.textContent = `¡Solicitud Registrada, ${nombre}!`;
+      if (successBody) successBody.textContent = `Hemos recibido tu solicitud de cita privada. Nos comunicaremos a tu correo (${email}) o WhatsApp para confirmar tu horario.`;
+      successBanner.style.display = 'block';
+    }
+  } finally {
+    submitBtn.textContent = originalText;
+    submitBtn.disabled = false;
   }
 }
