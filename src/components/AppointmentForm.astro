@@ -1,71 +1,135 @@
 ---
+
 ---
 
-<section id="contacto" class="section" style="background-color: var(--color-bg-secondary);">
+<section
+  id="contacto"
+  class="section"
+  style="background-color: var(--color-bg-secondary);"
+>
   <div class="container">
     <div class="section-header">
-      <h2 class="section-title">Agendar una Cita Privada</h2>
+      <h2 class="section-title">Agendar una Cita</h2>
       <div class="section-divider"></div>
       <p class="section-description">
-        Vive la experiencia de diseñar tu vestido de novia junto a Rocío Leiva en nuestro atelier exclusivo.
+        Vive la experiencia de diseñar tu vestido de novia junto a Rocío Leiva.
       </p>
     </div>
 
     <div class="appointment-wrapper">
       <form class="appointment-form" id="appointment-form">
-        <div class="form-group-full" style="text-align: center; margin-bottom: 0.5rem;">
-          <span style="font-size: var(--text-xs); color: var(--color-text-muted); text-transform: uppercase; letter-spacing: var(--letter-spacing-smallcaps);">* Campos requeridos para la confirmación de la cita</span>
+        <div
+          class="form-group-full"
+          style="text-align: center; margin-bottom: 0.5rem;"
+        >
+          <span
+            style="font-size: var(--text-xs); color: var(--color-text-muted); text-transform: uppercase; letter-spacing: var(--letter-spacing-smallcaps);"
+            >* Campos requeridos para la confirmación de la cita</span
+          >
         </div>
 
         <div class="form-field">
           <label for="nombre" class="form-label">Nombre Completo *</label>
-          <input type="text" id="nombre" class="form-input" placeholder="Ej. Sofía Mendoza" required />
+          <input
+            type="text"
+            id="nombre"
+            class="form-input"
+            placeholder="Ej. Sofía Mendoza"
+            required
+          />
         </div>
 
         <div class="form-field">
           <label for="email" class="form-label">Correo Electrónico *</label>
-          <input type="email" id="email" class="form-input" placeholder="ejemplo@correo.com" required />
+          <input
+            type="email"
+            id="email"
+            class="form-input"
+            placeholder="ejemplo@correo.com"
+            required
+          />
         </div>
 
         <div class="form-field">
           <label for="telefono" class="form-label">Teléfono / WhatsApp *</label>
-          <input type="tel" id="telefono" class="form-input" placeholder="+51 987 654 321" required />
+          <input
+            type="tel"
+            id="telefono"
+            class="form-input"
+            placeholder="+51 987 654 321"
+            required
+          />
         </div>
 
         <div class="form-field">
-          <label for="fecha-boda" class="form-label">Fecha Estimada de la Boda *</label>
+          <label for="fecha-boda" class="form-label"
+            >Fecha Estimada de la Boda *</label
+          >
           <input type="date" id="fecha-boda" class="form-input" required />
         </div>
 
         <div class="form-field form-group-full">
-          <label for="silueta" class="form-label">Silueta o Estilo Preferido</label>
+          <label for="silueta" class="form-label"
+            >Silueta o Estilo Preferido</label
+          >
           <select id="silueta" class="form-select">
             <option value="">Selecciona una opción (Opcional)</option>
             <option value="A-Line">Corte A-Line</option>
             <option value="Princesa">Princesa / Ball Gown</option>
             <option value="Sirena">Sirena / Mermaid</option>
             <option value="Recto">Corte Recto Minimalista</option>
-            <option value="Asesoria">Asesoría de Estilo Personalizada (Sin definir)</option>
+            <option value="Asesoria"
+              >Asesoría de Estilo Personalizada (Sin definir)</option
+            >
           </select>
         </div>
 
         <div class="form-field form-group-full">
-          <label for="mensaje" class="form-label">Detalles de tu Boda o Ideas de Estilo</label>
-          <textarea id="mensaje" class="form-textarea" placeholder="Cuéntanos sobre tu ceremonia, el lugar o cualquier detalle especial que desees incluir..."></textarea>
+          <label for="mensaje" class="form-label"
+            >Detalles de tu Boda o Ideas de Estilo</label
+          >
+          <textarea
+            id="mensaje"
+            class="form-textarea"
+            placeholder="Cuéntanos sobre tu ceremonia, el lugar o cualquier detalle especial que desees incluir..."
+          ></textarea>
         </div>
 
-        <div class="form-group-full" style="text-align: center; margin-top: 1.0rem;">
-          <button type="submit" class="btn btn-primary" style="width: 100%; max-width: 400px;">
-            Confirmar Solicitud de Cita Privada
+        <div
+          class="form-group-full"
+          style="text-align: center; margin-top: 1.0rem;"
+        >
+          <button
+            type="submit"
+            class="btn btn-primary"
+            style="width: 100%; max-width: 400px;"
+          >
+            Confirmar Solicitud de Cita
           </button>
         </div>
       </form>
 
-      <div id="form-success-banner" class="form-success-banner" style="display: none;" role="alert">
-        <i class="fa-solid fa-circle-check gold-text" style="font-size: 2.0rem; margin-bottom: 0.75rem;"></i>
-        <h3 style="font-size: 1.35rem; margin-bottom: 0.5rem;" id="success-title">¡Solicitud de Cita Registrada!</h3>
-        <p style="color: var(--color-text-secondary); font-size: var(--text-sm); line-height: 1.6;" id="success-body">
-          Gracias. Un asesor de nuestro atelier se pondrá en contacto contigo en menos de 24 horas para confirmar el día y hora de tu cita.
+      <div
+        id="form-success-banner"
+        class="form-success-banner"
+        style="display: none;"
+        role="alert"
+      >
+        <i
+          class="fa-solid fa-circle-check gold-text"
+          style="font-size: 2.0rem; margin-bottom: 0.75rem;"></i>
+        <h3
+          style="font-size: 1.35rem; margin-bottom: 0.5rem;"
+          id="success-title"
+        >
+          ¡Solicitud de Cita Registrada!
+        </h3>
+        <p
+          style="color: var(--color-text-secondary); font-size: var(--text-sm); line-height: 1.6;"
+          id="success-body"
+        >
+          Gracias. Nos pondremos en contacto contigo en menos de 24 horas para
+          confirmar el día y hora de tu cita.
         </p>
       </div>
     </div>
@@ -74,39 +138,47 @@
 
 <script>
   function initAppointmentForm() {
-    const form = document.getElementById('appointment-form');
+    const form = document.getElementById("appointment-form");
     if (!form) return;
 
-    form.addEventListener('submit', (event) => {
+    form.addEventListener("submit", (event) => {
       event.preventDefault();
 
-      const successBanner = document.getElementById('form-success-banner');
-      const successTitle = document.getElementById('success-title');
-      const successBody = document.getElementById('success-body');
+      const successBanner = document.getElementById("form-success-banner");
+      const successTitle = document.getElementById("success-title");
+      const successBody = document.getElementById("success-body");
 
-      const nombreEl = document.getElementById('nombre') as HTMLInputElement | null;
-      const emailEl = document.getElementById('email') as HTMLInputElement | null;
+      const nombreEl = document.getElementById(
+        "nombre",
+      ) as HTMLInputElement | null;
+      const emailEl = document.getElementById(
+        "email",
+      ) as HTMLInputElement | null;
 
-      const nombre = nombreEl?.value || '';
-      const email = emailEl?.value || '';
+      const nombre = nombreEl?.value || "";
+      const email = emailEl?.value || "";
 
-      const submitBtn = form.querySelector('button[type="submit"]') as HTMLButtonElement | null;
+      const submitBtn = form.querySelector(
+        'button[type="submit"]',
+      ) as HTMLButtonElement | null;
       if (submitBtn) {
         const originalText = submitBtn.textContent;
-        submitBtn.textContent = 'Enviando Solicitud...';
+        submitBtn.textContent = "Enviando Solicitud...";
         submitBtn.disabled = true;
 
         setTimeout(() => {
           if (form && successBanner) {
-            form.style.display = 'none';
-            if (successTitle) successTitle.textContent = `¡Solicitud Registrada, ${nombre}!`;
-            if (successBody) successBody.textContent = `Hemos recibido tu solicitud de cita privada. Un asesor de Rocío Leiva Atelier se comunicará contigo vía WhatsApp o al correo (${email}) en menos de 24 horas para confirmar tu horario.`;
-            successBanner.style.display = 'block';
+            form.style.display = "none";
+            if (successTitle)
+              successTitle.textContent = `¡Solicitud Registrada, ${nombre}!`;
+            if (successBody)
+              successBody.textContent = `Hemos recibido tu solicitud de cita privada. Un asesor de Rocío Leiva Atelier se comunicará contigo vía WhatsApp o al correo (${email}) en menos de 24 horas para confirmar tu horario.`;
+            successBanner.style.display = "block";
           }
         }, 1000);
       }
     });
   }
 
-  document.addEventListener('DOMContentLoaded', initAppointmentForm);
+  document.addEventListener("DOMContentLoaded", initAppointmentForm);
 </script>

@@ -18,14 +18,13 @@ const {
   imageSrc,
   imageAlt,
   modalDesc,
-  modalCategory
+  modalCategory,
 } = Astro.props;
 ---
 
 <article class="collection-card" data-category={categoryTag}>
   <div class="collection-card-media">
     <img src={imageSrc} alt={imageAlt} loading="lazy" />
-    <span class="collection-badge">{badge}</span>
   </div>
   <div class="collection-card-body">
     <div>
