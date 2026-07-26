@@ -2,7 +2,7 @@
   "name": "rocio-leiva-portfolio",
   "type": "module",
   "version": "1.0.0",
-  "description": "Atelier de Alta Costura Nupcial Rocío Leiva — Sitio Web Astro",
+  "description": "Atelier de Alta Costura Nupcial Rocío Leyva — Sitio Web Astro",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",

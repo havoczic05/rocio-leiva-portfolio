@@ -1,5 +1,5 @@
 /* ==========================================================================
-   ROCÍO LEIVA — HIGH COUTURE BRIDAL INTERACTIVE SCRIPTS
+   ROCÍO LEYVA — HIGH COUTURE BRIDAL INTERACTIVE SCRIPTS
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
